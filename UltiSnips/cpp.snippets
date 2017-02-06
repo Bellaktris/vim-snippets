@@ -12,62 +12,89 @@ snippet beginend "$1.begin(), $1.end() (beginend)"
 ${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()
 endsnippet
 
-snippet cl "class .. (class)"
-class ${1:`!p snip.rv = snip.basename or "name"`}
-{
-public:
-	${1/(\w+).*/$1/} (${2:arguments});
-	virtual ~${1/(\w+).*/$1/} ();
+snippet class "class .. (class)"
+/*!  ${3: ... docstring ... }  */
+struct ${1:`!p snip.rv = snip.basename or "name"`} {
+  ${1/(\w+).*/$1/} (${2:arguments});
+  ~${1/(\w+).*/$1/} () {};
 
-private:
+ private:
 	${0:/* data */}
 };
 endsnippet
 
-snippet ns "namespace .. (namespace)"
-namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`}
-{
-	${VISUAL}$0
-}${1/.+/ \/* /m}$1${1/.+/ *\/ /m}
+snippet struct "struct .. (struct)"
+/*!  ${3: ... docstring ... }  */
+struct ${1:`!p snip.rv = snip.basename or "name"`} {
+  ${1/(\w+).*/$1/} (${2:arguments});
+  ~${1/(\w+).*/$1/} () {};
+
+ private:
+	${0:/* data */}
+};
 endsnippet
 
-snippet readfile "read file (readF)"
-std::vector<char> v;
-if (FILE *fp = fopen(${1:"filename"}, "r"))
-{
-	char buf[1024];
-	while(size_t len = fread(buf, 1, sizeof(buf), fp))
-		v.insert(v.end(), buf, buf + len);
-	fclose(fp);
-}
+snippet namespace "namespace .. (namespace)"
+namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`} {
+  ${VISUAL}$0
+}${1/.+/  \/\/ namespace /m}$1${1/.+/  /m}
+endsnippet
+
+snippet umap "std::unordered_map (map)"
+std::unordered_map<${1:key}, ${2:value}> $0;
 endsnippet
 
 snippet map "std::map (map)"
-std::map<${1:key}, ${2:value}> map$0;
+std::map<${1:key}, ${2:value}> $0;
 endsnippet
 
-snippet vector "std::vector (v)"
-std::vector<${1:char}> v$0;
+snippet set "std::set (set)"
+std::set<${1:type}> $0;
 endsnippet
 
-snippet tp "template <typename ..> (template)"
-template <typename ${1:_InputIter}>
+snippet uset "std::unordered_set (unordered_set)"
+std::unordered_set<${1:type}> $0;
 endsnippet
 
-snippet cla "An entire .h generator" b
-#ifndef ${2:`!v substitute(vim_snippets#Filename('$1_H','ClassName'),'.*','\U&\E','')`}
-#define $2
-
-class ${1:`!v substitute(substitute(vim_snippets#Filename('$1','ClassName'),'^.','\u&',''), '_\(\w\)', '\u\1', 'g')`}
-{
-private:
-	$3
-
-public:
-	$1();
-	virtual ~$1();
-};
-
-#endif /* $2 */
+snippet vector "std::vector (vector)"
+std::vector<${1:int}> $0;
 endsnippet
+
+snippet array "std::array (array)"
+std::array<${1:int}, ${2:n}> $0;
+endsnippet
+
+snippet template "template<typename ..> (template)"
+template<typename ${1:Tp}> $0
+endsnippet
+
+snippet cout "std::cout << ... << std::endl; (cout)"
+std::cout << ${1} << std::endl; $0
+endsnippet
+
+snippet cerr "std::cout << ... << std::endl; (cerr)"
+std::cerr << ${1} << std::endl; $0
+endsnippet
+
+# std::cin
+snippet cin "std::cin >> ...; (cin)"
+std::cin >> ${1}; $0
+endsnippet
+
+snippet sca "static_cast<..>(..) (static_cast)"
+static_cast<${1:unsigned}>(${2:expr}) $0
+endsnippet
+
+snippet dca "dynamic_cast<..>(..) (dynamic_cast)"
+dynamic_cast<${1:unsigned}>(${2:expr}) $0
+endsnippet
+
+snippet rca "reinterpret_cast<..>(..) (reinterpret_cast)"
+reinterpret_cast<${1:unsigned}>(${2:expr}) $0
+endsnippet
+
+snippet cca "const_cast<..>(..) (const_cast)"
+const_cast<${1:unsigned}>(${2:expr}) $0
+endsnippet
+
 # vim:ft=snippets:
