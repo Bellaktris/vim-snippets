@@ -36,65 +36,113 @@ endsnippet
 
 snippet namespace "namespace .. (namespace)"
 namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`} {
-  ${VISUAL}$0
+  ${VISUAL}${0: }
 }${1/.+/  \/\/ namespace /m}$1${1/.+/  /m}
 endsnippet
 
 snippet umap "std::unordered_map (map)"
-std::unordered_map<${1:key}, ${2:value}> $0;
+std::unordered_map<${1:key}, ${2:value}> ${0:/* name */};
+endsnippet
+
+snippet unordered_map "std::unordered_map (map)"
+std::unordered_map<${1:key}, ${2:value}> ${0:/* name */};
+endsnippet
+
+snippet std::unordered_map "std::unordered_map (map)"
+std::unordered_map<${1:key}, ${2:value}> ${0:/* name */};
 endsnippet
 
 snippet map "std::map (map)"
-std::map<${1:key}, ${2:value}> $0;
+std::map<${1:key}, ${2:value}> ${0:/* name */};
+endsnippet
+
+snippet std::map "std::map (map)"
+std::map<${1:key}, ${2:value}> ${0:/* name */};
 endsnippet
 
 snippet set "std::set (set)"
-std::set<${1:type}> $0;
+std::set<${1:type}> ${0:/* name */};
+endsnippet
+
+snippet std::set "std::set (set)"
+std::set<${1:type}> ${0:/* name */};
 endsnippet
 
 snippet uset "std::unordered_set (unordered_set)"
-std::unordered_set<${1:type}> $0;
+std::unordered_set<${1:type}> ${0:/* name */};
+endsnippet
+
+snippet unordered_set "std::unordered_set (unordered_set)"
+std::unordered_set<${1:type}> ${0:/* name */};
+endsnippet
+
+snippet std::unordered_set "std::unordered_set (unordered_set)"
+std::unordered_set<${1:type}> ${0:/* name */};
 endsnippet
 
 snippet vector "std::vector (vector)"
-std::vector<${1:int}> $0;
+std::vector<${1:int}> ${0:/* name */};
+endsnippet
+
+snippet std::vector "std::vector (vector)"
+std::vector<${1:int}> ${0:/* name */};
 endsnippet
 
 snippet array "std::array (array)"
-std::array<${1:int}, ${2:n}> $0;
+std::array<${1:int}, ${2:n}> ${0:/* name */};
+endsnippet
+
+snippet std::array "std::array (array)"
+std::array<${1:int}, ${2:n}> ${0: };
 endsnippet
 
 snippet template "template<typename ..> (template)"
-template<typename ${1:Tp}> $0
+template<typename ${1:Tp}> ${0: }
 endsnippet
 
 snippet cout "std::cout << ... << std::endl; (cout)"
-std::cout << ${1} << std::endl; $0
+std::cout << ${1} << std::endl; ${0: }
 endsnippet
 
 snippet cerr "std::cout << ... << std::endl; (cerr)"
-std::cerr << ${1} << std::endl; $0
+std::cerr << ${1} << std::endl; ${0: }
 endsnippet
 
 # std::cin
 snippet cin "std::cin >> ...; (cin)"
-std::cin >> ${1}; $0
+std::cin >> ${1}; ${0: }
 endsnippet
 
 snippet sca "static_cast<..>(..) (static_cast)"
-static_cast<${1:unsigned}>(${2:expr}) $0
+static_cast<${1:unsigned}>(${2:expr}) ${0: }
+endsnippet
+
+snippet static_cast "static_cast<..>(..) (static_cast)"
+static_cast<${1:unsigned}>(${2:expr}) ${0: }
 endsnippet
 
 snippet dca "dynamic_cast<..>(..) (dynamic_cast)"
-dynamic_cast<${1:unsigned}>(${2:expr}) $0
+dynamic_cast<${1:unsigned}>(${2:expr}) ${0: }
+endsnippet
+
+snippet dynamic_cast "dynamic_cast<..>(..) (dynamic_cast)"
+dynamic_cast<${1:unsigned}>(${2:expr}) ${0: }
 endsnippet
 
 snippet rca "reinterpret_cast<..>(..) (reinterpret_cast)"
-reinterpret_cast<${1:unsigned}>(${2:expr}) $0
+reinterpret_cast<${1:unsigned}>(${2:expr}) ${0: }
+endsnippet
+
+snippet reinterpret_cast "reinterpret_cast<..>(..) (reinterpret_cast)"
+reinterpret_cast<${1:unsigned}>(${2:expr}) ${0: }
 endsnippet
 
 snippet cca "const_cast<..>(..) (const_cast)"
-const_cast<${1:unsigned}>(${2:expr}) $0
+const_cast<${1:unsigned}>(${2:expr}) ${0: }
+endsnippet
+
+snippet const_cast "const_cast<..>(..) (const_cast)"
+const_cast<${1:unsigned}>(${2:expr}) ${0: }
 endsnippet
 
 # vim:ft=snippets:
